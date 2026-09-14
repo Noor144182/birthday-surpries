@@ -1,80 +1,61 @@
+function showPage(pageId) {
 
-// ============================================================
-// Birthday Surprise Website
-// ============================================================
+    const pages = document.querySelectorAll(".page");
 
+    pages.forEach(function(page) {
 
-// ============================================================
-// PAGE 1 → PAGE 2
-// ============================================================
+        page.classList.remove("active");
+
+    });
+
+    const selectedPage =
+        document.getElementById(pageId);
+
+    if (selectedPage) {
+
+        selectedPage.classList.add("active");
+
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
 
 function showCake() {
 
-    document.getElementById("page1").style.display = "none";
-
-    document.getElementById("page2").style.display = "flex";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    showPage("page2");
 
     createSprinkles("sprinkles2");
+
 }
 
-
-
-// ============================================================
-// PAGE 2 → PAGE 3
-// MEMORIES
-// ============================================================
 
 function showPhotos() {
 
-    document.getElementById("page2").style.display = "none";
-
-    document.getElementById("page3").style.display = "flex";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    showPage("page3");
 
     createSprinkles("sprinkles3");
+
 }
 
-
-
-// ============================================================
-// PAGE 3 → PAGE 4
-// FINAL WISHES
-// ============================================================
 
 function showWishes() {
 
-    document.getElementById("page3").style.display = "none";
-
-    document.getElementById("page4").style.display = "flex";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    showPage("page4");
 
     createSprinkles("sprinkles4");
+
 }
 
-
-
-// ============================================================
-// CREATE COLORFUL SPRINKLES
-// ============================================================
 
 function createSprinkles(containerId) {
 
     const container =
         document.getElementById(containerId);
-
 
     if (!container) {
 
@@ -82,16 +63,9 @@ function createSprinkles(containerId) {
 
     }
 
-
-    // Remove old sprinkles
-
     container.innerHTML = "";
 
-
-    // Number of sprinkles
-
     let numberOfSprinkles;
-
 
     if (window.innerWidth < 600) {
 
@@ -104,10 +78,7 @@ function createSprinkles(containerId) {
     }
 
 
-    // Sprinkle colors
-
     const colors = [
-
         "#ff4f9a",
         "#ff85b3",
         "#d63384",
@@ -118,11 +89,8 @@ function createSprinkles(containerId) {
         "#ffd166",
         "#06d6a0",
         "#4dabf7"
-
     ];
 
-
-    // Create sprinkles
 
     for (
         let i = 0;
@@ -130,29 +98,16 @@ function createSprinkles(containerId) {
         i++
     ) {
 
-
         const sprinkle =
             document.createElement("div");
 
-
-        sprinkle.classList.add(
-            "sprinkle"
-        );
-
-
-        // Random horizontal position
+        sprinkle.classList.add("sprinkle");
 
         sprinkle.style.left =
             Math.random() * 100 + "%";
 
-
-        // Random vertical position
-
         sprinkle.style.top =
             Math.random() * 100 + "%";
-
-
-        // Random color
 
         sprinkle.style.background =
             colors[
@@ -163,47 +118,26 @@ function createSprinkles(containerId) {
             ];
 
 
-        // Random width
-
         const width =
             Math.random() * 6 + 4;
-
-
-        // Random height
 
         const height =
             Math.random() * 12 + 8;
 
-
         sprinkle.style.width =
             width + "px";
-
 
         sprinkle.style.height =
             height + "px";
 
 
-        // Random animation speed
-
-        const duration =
-            Math.random() * 8 + 5;
-
-
         sprinkle.style.animationDuration =
-            duration + "s";
-
-
-        // Random animation delay
-
-        const delay =
-            Math.random() * 8;
+            Math.random() * 8 + 5 + "s";
 
 
         sprinkle.style.animationDelay =
-            delay + "s";
+            Math.random() * 8 + "s";
 
-
-        // Random rotation
 
         sprinkle.style.transform =
             "rotate(" +
@@ -211,29 +145,20 @@ function createSprinkles(containerId) {
             "deg)";
 
 
-        // Add sprinkle to page
-
-        container.appendChild(
-            sprinkle
-        );
+        container.appendChild(sprinkle);
 
     }
 
 }
 
 
-
-// ============================================================
-// START PAGE 1 SPRINKLES
-// ============================================================
-
 document.addEventListener(
     "DOMContentLoaded",
-    function () {
+    function() {
 
-        createSprinkles(
-            "sprinkles1"
-        );
+        showPage("page1");
+
+        createSprinkles("sprinkles1");
 
     }
 );
