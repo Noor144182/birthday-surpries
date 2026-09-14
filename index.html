@@ -1,0 +1,699 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Birthday Surprise ❤️</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(
+                135deg,
+                #ffe6f2,
+                #fff0f7,
+                #ffe4ec
+            );
+            color: #5a2346;
+        }
+
+
+        /* =========================
+           PAGES
+        ========================= */
+
+        .page {
+            min-height: 100vh;
+            width: 100%;
+            display: none;
+            position: relative;
+            overflow: hidden;
+            padding: 40px 20px;
+        }
+
+        .page.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* =========================
+           SPRINKLES
+        ========================= */
+
+        .sprinkles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .sprinkle {
+            position: absolute;
+            width: 8px;
+            height: 20px;
+            border-radius: 5px;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+
+            0% {
+                transform:
+                    translateY(-100px)
+                    rotate(0deg);
+            }
+
+            100% {
+                transform:
+                    translateY(110vh)
+                    rotate(360deg);
+            }
+
+        }
+
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+        }
+
+
+        /* =========================
+           PAGE 1
+        ========================= */
+
+        .small-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 60px;
+            color: #d63384;
+            margin-bottom: 20px;
+            text-shadow:
+                2px 2px 10px
+                rgba(214, 51, 132, 0.2);
+        }
+
+        .special {
+            font-size: 25px;
+            color: #a61e4d;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .message {
+            max-width: 650px;
+            margin: auto;
+            font-size: 19px;
+            line-height: 1.8;
+            color: #66334f;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .button {
+            margin-top: 35px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff4f9a,
+                    #d63384
+                );
+
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 20px
+                rgba(214, 51, 132, 0.3);
+
+            transition: 0.3s ease;
+        }
+
+        .button:hover {
+            transform:
+                translateY(-4px)
+                scale(1.03);
+
+            box-shadow:
+                0 12px 25px
+                rgba(214, 51, 132, 0.4);
+        }
+
+
+        /* =========================
+           CAKE PAGE
+        ========================= */
+
+        .celebrate {
+            font-size: 40px;
+            color: #d63384;
+            margin-bottom: 30px;
+        }
+
+        .cake {
+            font-size: 130px;
+            animation: cakeBounce 2s infinite;
+        }
+
+        @keyframes cakeBounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+        }
+
+        .candles {
+            font-size: 35px;
+            margin-top: -15px;
+        }
+
+        .cake-text {
+            margin-top: 25px;
+            font-size: 20px;
+            color: #66334f;
+        }
+
+
+        /* =========================
+           MEMORIES PAGE
+        ========================= */
+
+        .page h2 {
+            font-size: 42px;
+            color: #d63384;
+            margin-bottom: 35px;
+        }
+
+        .photos-grid {
+            width: 100%;
+            max-width: 800px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 25px;
+        }
+
+        .photo-card {
+            background: white;
+            padding: 12px;
+            border-radius: 20px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 0, 0, 0.12);
+
+            transition: 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform:
+                translateY(-8px)
+                rotate(1deg);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 320px;
+
+            object-fit: cover;
+
+            display: block;
+
+            border-radius: 14px;
+        }
+
+
+        /* =========================
+           FINAL WISH PAGE
+        ========================= */
+
+        .heart {
+            font-size: 75px;
+
+            animation:
+                heartBeat 1.5s infinite;
+
+            margin-bottom: 15px;
+        }
+
+        @keyframes heartBeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+
+        }
+
+        .wish-title {
+            font-size: 42px;
+            color: #d63384;
+            margin-bottom: 30px;
+        }
+
+        .wish-box {
+            max-width: 750px;
+
+            background:
+                rgba(255, 255, 255, 0.85);
+
+            padding: 35px;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 10px 35px
+                rgba(0, 0, 0, 0.1);
+
+            line-height: 1.8;
+
+            font-size: 18px;
+
+            color: #66334f;
+        }
+
+        .wish-box p {
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .page {
+                padding: 30px 15px;
+            }
+
+            h1 {
+                font-size: 42px;
+            }
+
+            .special {
+                font-size: 21px;
+            }
+
+            .message {
+                font-size: 17px;
+            }
+
+            .celebrate {
+                font-size: 30px;
+            }
+
+            .page h2 {
+                font-size: 32px;
+            }
+
+            .photos-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+            }
+
+            .photo-card img {
+                height: 300px;
+            }
+
+            .wish-title {
+                font-size: 32px;
+            }
+
+            .wish-box {
+                padding: 25px 20px;
+                font-size: 16px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         PAGE 1 — BIRTHDAY INTRO
+    ========================================== -->
+
+    <section
+        id="page1"
+        class="page active">
+
+        <div
+            id="sprinkles1"
+            class="sprinkles">
+        </div>
+
+
+        <div class="content">
+
+
+            <div class="small-title">
+
+                Happy Birthday Alishba 🎂❤️
+
+            </div>
+
+
+            <h1>
+
+                My Bestie Alishba 💕
+
+            </h1>
+
+
+            <div class="special">
+
+                ✨ To My Beautiful Bestie ✨
+
+            </div>
+
+
+            <p class="message">
+
+                Happy Birthday to my amazing bestie! 💕
+
+                Life is so much more fun and beautiful
+                with you.
+
+                Thank you for always being there,
+                for all the laughs,
+                and for all the beautiful memories
+                we share. 🥹❤️
+
+            </p>
+
+
+            <button
+                class="button"
+                onclick="showCake()">
+
+                🎁 Open Your Surprise
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         PAGE 2 — CAKE
+    ========================================== -->
+
+    <section
+        id="page2"
+        class="page">
+
+        <div
+            id="sprinkles2"
+            class="sprinkles">
+        </div>
+
+
+        <div class="content">
+
+
+            <h2 class="celebrate">
+
+                A Birthday Cake For My Bestie! 🎂❤️
+
+            </h2>
+
+
+            <div class="cake">
+
+                🎂
+
+            </div>
+
+
+            <div class="candles">
+
+                🕯️ 🕯️ 🕯️
+
+            </div>
+
+
+            <p class="cake-text">
+
+                Make a wish, Alishba...
+                and blow your candles! ✨❤️
+
+            </p>
+
+
+            <button
+                class="button"
+                onclick="showPhotos()">
+
+                💖 Next — Memories
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         PAGE 3 — MEMORIES
+    ========================================== -->
+
+    <section
+        id="page3"
+        class="page">
+
+        <div
+            id="sprinkles3"
+            class="sprinkles">
+        </div>
+
+
+        <div class="content">
+
+
+            <h2>
+
+                Our Beautiful Memories ❤️
+
+            </h2>
+
+
+            <!-- ONLY TWO PHOTOS -->
+
+            <div class="photos-grid">
+
+
+                <div class="photo-card">
+
+                    <img
+                        src="images/photo1.jpg"
+                        alt="Bestie Memory 1">
+
+                </div>
+
+
+                <div class="photo-card">
+
+                    <img
+                        src="images/photo2.jpg"
+                        alt="Bestie Memory 2">
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                class="button"
+                onclick="showWishes()">
+
+                💕 One More Surprise
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         PAGE 4 — FINAL WISHES
+    ========================================== -->
+
+    <section
+        id="page4"
+        class="page">
+
+        <div
+            id="sprinkles4"
+            class="sprinkles">
+        </div>
+
+
+        <div class="content">
+
+
+            <div class="heart">
+
+                💖
+
+            </div>
+
+
+            <h2 class="wish-title">
+
+                Happy Birthday Alishba! 🎂❤️
+
+            </h2>
+
+
+            <div class="wish-box">
+
+
+                <p>
+
+                    Happy Birthday to my beautiful bestie,
+                    Alishba! ❤️
+
+                    I am so lucky to have a friend like you
+                    in my life.
+
+                    You are not just my bestie,
+                    you are someone who makes every moment
+                    more special and every memory
+                    more beautiful. 🥹💕
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    On your special day, I wish you endless
+                    happiness, success, good health and lots
+                    of beautiful moments.
+
+                    May all your dreams come true and may
+                    you always keep smiling and shining. ✨
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    Thank you for all the laughs,
+                    crazy moments, beautiful memories
+                    and for always being such an amazing
+                    friend.
+
+                    I hope our friendship stays this beautiful
+                    forever. 🫶🏻❤️
+
+                </p>
+
+
+                <br>
+
+
+                <p>
+
+                    Happy Birthday once again, Alishba! 🎂💖
+
+                    Stay happy, stay blessed, and always
+                    remember that you have a bestie who
+                    loves and appreciates you so much! 🌸💕
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
